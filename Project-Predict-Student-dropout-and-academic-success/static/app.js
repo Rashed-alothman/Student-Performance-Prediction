@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   const manualEntryForm = document.getElementById("manual-entry-form");
+  const manualEntryButton = document.getElementById("manualEntryButton");
   const csvUploadForm = document.getElementById("csv-upload-form");
   const predictionResult = document.getElementById("predictionResult");
   const csvFileInput = document.getElementById("csvFile");
@@ -24,6 +25,14 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   }
 
+  manualEntryButton.addEventListener("click", function () {
+    // Toggle the form's display property
+    if (manualEntryForm.style.display === "none") {
+      manualEntryForm.style.display = "block";
+    } else {
+      manualEntryForm.style.display = "none";
+    }
+  });
   // Handle manual data entry form submission
   manualEntryForm.addEventListener("submit", function (e) {
     handleFormSubmit(e, "/predict_manual", () => {
