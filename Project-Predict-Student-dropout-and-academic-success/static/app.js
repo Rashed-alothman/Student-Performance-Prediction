@@ -38,7 +38,8 @@ document.addEventListener("DOMContentLoaded", function () {
     handleFormSubmit(e, "/predict_csv", () => {
       const formData = new FormData();
       if (csvFileInput.files.length > 0) {
-        formData.append("csvFile", csvFileInput.files[0]);
+        // Change "csvFile" to "file" to match Flask's request.files['file']
+        formData.append("file", csvFileInput.files[0]);
       }
       return formData;
     });

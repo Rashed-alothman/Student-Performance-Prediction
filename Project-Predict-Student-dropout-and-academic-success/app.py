@@ -42,9 +42,35 @@ def upload_file():
             return predict_from_csv(filepath)
     return render_template('index.html')
 
+@app.route('/predict_csv', methods=['POST'])
+def predict_csv():
+    """Handle CSV file upload and prediction."""
+    if 'file' not in request.files:
+        return jsonify({"error": "No file part"}), 400
+    file = request.files['file']
+    if file.filename == '':
+        return jsonify({"error": "No selected file"}), 400
+    if file and allowed_file(file.filename):
+        filename = secure_filename(file.filename)
+        filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+        file.save(filepath)
+        
+        # Process the file and make predictions
+        return predict_from_csv(filepath)
+    
 def predict_from_csv(filepath):
     """Function to process CSV file and predict."""
-    df = pd.read_csv(filepath)
+    # Read the CSV file without headers (header=None) and skip any initial space it is i FunctionIt will be added Later ##  header=None,
+    df = pd.read_csv(filepath,  skipinitialspace=True)
+    
+    # Add column names to the dataframe
+    column_names = ["Marital status", "Application mode", "Application order", "Course", "Daytime/evening attendance", "Previous qualification", "Nacionality", "Mother's qualification", "Father's qualification", "Mother's occupation", "Father's occupation", "Displaced", "Educational special needs", "Debtor", "Tuition fees up to date", "Gender", "Scholarship holder", "Age at enrollment", "International", "Curricular units 1st sem (credited)", "Curricular units 1st sem (enrolled)", "Curricular units 1st sem (evaluations)", "Curricular units 1st sem (approved)", "Curricular units 1st sem (grade)", "Curricular units 1st sem (without evaluations)", "Curricular units 2nd sem (credited)", "Curricular units 2nd sem (enrolled)", "Curricular units 2nd sem (evaluations)", "Curricular units 2nd sem (approved)", "Curricular units 2nd sem (grade)", "Curricular units 2nd sem (without evaluations)", "Unemployment rate", "Inflation rate", "GDP"]
+    df.columns = column_names
+
+    # If your model expects a specific number of columns, verify that here
+    expected_num_columns = 34  # Change this to match your model's expected input
+    if len(df.columns) != expected_num_columns:
+        return jsonify({"error": f"Expected {expected_num_columns} columns, but got {len(df.columns)}"}), 430
     # Assuming the model expects the same columns as in the CSV,
     # predict and return the results.
     predictions = model.predict(df)
