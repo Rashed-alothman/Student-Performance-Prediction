@@ -7,18 +7,39 @@ document.addEventListener("DOMContentLoaded", function () {
   const darkModeToggle = document.getElementById("darkModeToggle");
   const waveBackground = document.querySelector(".wave-background");
 
-  // Function to handle form submission
-  function handleFormSubmit(e, url, processData) {
+  // Function to handle form submission for JSON data
+  function handleJSONFormSubmit(e, url, jsonData) {
     e.preventDefault();
-    const data = processData();
-
     fetch(url, {
       method: "POST",
-      body: data,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: jsonData,
     })
       .then((response) => response.json())
-      .then((prediction) => {
-        predictionResult.textContent = `Prediction Result: ${prediction.result}`;
+      .then((data) => {
+        predictionResult.textContent = `Prediction Result: ${data.result}`;
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  }
+
+  // Function to handle form submission for FormData (File upload)
+  function handleFileFormSubmit(e, url, formData) {
+    e.preventDefault();
+    fetch(url, {
+      method: "POST",
+      body: formData,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // Assuming the server responds with an array of predictions
+        predictionResult.innerHTML = "<h3>Predictions:</h3>";
+        data.forEach((pred, index) => {
+          predictionResult.innerHTML += `Prediction ${index + 1}: ${pred}<br>`;
+        });
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -27,31 +48,27 @@ document.addEventListener("DOMContentLoaded", function () {
 
   manualEntryButton.addEventListener("click", function () {
     // Toggle the form's display property
-    if (manualEntryForm.style.display === "none") {
-      manualEntryForm.style.display = "block";
-    } else {
-      manualEntryForm.style.display = "none";
-    }
+    manualEntryForm.style.display =
+      manualEntryForm.style.display === "none" ? "block" : "none";
   });
+
   // Handle manual data entry form submission
   manualEntryForm.addEventListener("submit", function (e) {
-    handleFormSubmit(e, "/predict_manual", () => {
-      const formData = new FormData(manualEntryForm);
-      const data = Object.fromEntries(formData.entries());
-      return JSON.stringify(data);
-    });
+    const jsonData = JSON.stringify(
+      Object.fromEntries(new FormData(manualEntryForm).entries())
+    );
+    handleJSONFormSubmit(e, "/predict_manual", jsonData);
   });
 
   // Handle CSV file upload form submission
   csvUploadForm.addEventListener("submit", function (e) {
-    handleFormSubmit(e, "/predict_csv", () => {
-      const formData = new FormData();
-      if (csvFileInput.files.length > 0) {
-        // Change "csvFile" to "file" to match Flask's request.files['file']
-        formData.append("file", csvFileInput.files[0]);
-      }
-      return formData;
-    });
+    const formData = new FormData();
+    if (csvFileInput.files.length > 0) {
+      formData.append("file", csvFileInput.files[0]);
+      handleFileFormSubmit(e, "/predict_csv", formData);
+    } else {
+      alert("Please select a file to upload.");
+    }
   });
 
   // Toggle dark mode
