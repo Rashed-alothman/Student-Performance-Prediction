@@ -8,7 +8,8 @@ import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split, RandomizedSearchCV, cross_val_score, KFold
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import accuracy_score, classification_report
+from sklearn.metrics import confusion_matrix, roc_curve, auc
 from sklearn.preprocessing import StandardScaler, Normalizer
 from sklearn.pipeline import Pipeline
 import matplotlib.pyplot as plt
@@ -103,7 +104,7 @@ def evaluate_model(pipeline, x_test, y_test):
         logging.error(f"An error occurred while evaluating the model: {e}")
         sys.exit(1)
 
-def visualize_results(model, X):
+def visualize_results(model, x):
     '''Generates and displays important features from the model.
     
     Args:
@@ -115,10 +116,10 @@ def visualize_results(model, X):
         indices = np.argsort(feature_importances)[::-1]
         plt.figure(figsize=(12, 6))
         plt.title("Feature Importances")
-        plt.bar(range(X.shape[1]), feature_importances[indices],
+        plt.bar(range(x.shape[1]), feature_importances[indices],
                 color="r", align="center")
-        plt.xticks(range(X.shape[1]), indices)
-        plt.xlim([-1, X.shape[1]])
+        plt.xticks(range(x.shape[1]), indices)
+        plt.xlim([-1, x.shape[1]])
         plt.xlabel('Feature Index')
         plt.ylabel('Importance')
         plt.show()
