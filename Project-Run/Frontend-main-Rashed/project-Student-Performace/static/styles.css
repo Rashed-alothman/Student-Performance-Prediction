@@ -1,0 +1,307 @@
+/**
+ * FILEPATH: /C:/Users/rashe/.vscode/.vscode/project/student_performance_project/project-show/static/styles.css
+ * 
+ * This CSS file contains styles for a student performance project. It includes:
+ * - Importing the Poppins font from Google Fonts for a modern appearance
+ * - CSS variables for easy theme management
+ * - Styles for the body, header, toggle button, container, and buttons
+ * - Animation for transitioning to dark mode
+ * 
+ * @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+ * 
+ * CSS Variables:
+ * - --transition-duration: The duration of transitions
+ * - --ease-out-quart: The easing function for transitions
+ * - --color-bg-light: The background color for light mode
+ * - --color-button-light: The button color for light mode
+ * - --color-button-hover-light: The button hover color for light mode
+ * - --color-bg-dark: The background color for dark mode
+ * - --color-bg-dark-secondary: A slightly lighter shade for the dark mode gradient
+ * - --color-button-dark: The button color for dark mode
+ * - --color-button-hover-dark: The button hover color for dark mode
+ * 
+ * Selectors:
+ * - *: Applies styles to all elements
+ * - html, body: Applies styles to the HTML and body elements
+ * - body.dark-mode: Applies styles to the body element when in dark mode
+ * - .header: Applies styles to the header element
+ * - #toggleDarkMode: Applies styles to the toggle button for dark mode
+ * - .container: Applies styles to the container element
+ * - button: Applies styles to all button elements
+ * - .nextButton: Applies styles to the next button
+ * 
+ * Animation:
+ * - @keyframes bodyFade: Animation for transitioning the body background color in dark mode
+ * 
+ * Note: This CSS file assumes the presence of HTML markup that corresponds to the selectors used.
+ */
+/* Use Google Fonts to import the Poppins font for a modern appearance */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+/* CSS Variables for easy theme management */
+:root {
+    /* Light mode color definitions */
+    --light-primary: #f0f0f0;
+    --light-secondary: #88d3ce;
+    --light-accent: #6e45e2;
+
+    /* Dark mode color definitions */
+    --dark-primary: #2c3e50;
+    --dark-secondary: #34495e;
+    --dark-accent: #4e54c8;
+
+    /* Transition timing */
+    --transition-time: 0.3s;
+}
+
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+/* Keyframes for light mode wave animation */
+@keyframes light-wave {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+/* Body animation for Dark Mode */
+@keyframes bodyFade {
+    0%, 100% { background-color: var(--color-bg-dark); }
+    50% { background-color: var(--color-bg-dark-secondary); }
+}
+
+body {
+    background: linear-gradient(-45deg, var(--light-primary), var(--light-secondary), var(--light-accent));
+    background-size: 300% 300%;
+    animation: light-wave 10s ease infinite;
+    transition: background var(--transition-time);
+}
+
+body.dark-mode {
+    background: linear-gradient(-45deg, var(--dark-primary), var(--dark-secondary), var(--dark-accent));
+    animation: dark-wave 10s ease infinite;
+}
+
+/* Header styles */
+.header {
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* Toggle button for Dark Mode with transition */
+#toggleDarkMode {
+    padding: 5px 10px;
+    border-radius: 20px; /* Rounded corners for a modern look */
+    border: none;
+    background-color: var(--color-button-dark);
+    color: white;
+    font-size: 0.8em;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: background-color var(--transition-duration) var(--ease-out-quart);
+}
+
+/* Button hover states */
+#toggleDarkMode:hover {
+    background-color: var(--color-button-hover-dark);
+}
+
+/* Container styles */
+.container {
+    width: 80%; /* Adjust to your preferred width */
+    max-width: 500px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white for light mode */
+    backdrop-filter: blur(10px); /* Smooth blur effect */
+    border-radius: 10px; /* Rounded corners for modern appearance */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);/* Subtle shadow for depth */
+    border: 1px solid rgba(0, 0, 0, 0.05); /* Soft border */
+    transition: all 0.3s ease-in-out;
+}
+
+body.dark-mode .container {
+    background: rgba(0, 0, 0, 0.2); /* For dark mode */
+    border-color: rgba(255, 255, 255, 0.1);
+    }
+
+/* Button Base Style */
+button {
+    display: block; /* Ensure it's a block element to fit width */
+    width: auto; /* Adjust width as needed */
+    margin: 2rem auto; /* Center the button and add space above and below */
+    padding: 10px 20px;
+    border-radius: 25px;
+    border: none;
+    background-color: #ffffff;
+    color: #000000;
+    font-weight: 600;
+    cursor: pointer;
+    outline: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    transition: all 0.3s ease;
+}
+button.next {
+    margin-top: 20px;
+    padding: 10px 25px;
+    background-color: #4e54c8;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Next button styles */
+
+button.next:hover {
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.25);
+    background-color: #8f94fb;
+    transform: translateY(-2px);
+}
+
+/* Button Glow on Hover */
+button:hover {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.75);
+    background-color: #f8f8f8; /* Lighter shade on hover for a "raised" effect */
+}
+/*  */
+button:focus {
+    background-color: #3F51B5; /* Darken color on hover/focus */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Increase shadow on hover/focus */
+    transform: translateY(-3px); /* Lift button slightly on hover/focus */
+}
+/* Button Active State */
+button:active {
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.9), inset 0 0 5px rgba(0, 0, 0, 0.2);
+    background-color: #e8e8e8; /* Even lighter shade to simulate a press-down effect */
+}
+input[type="number"] {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f8f8f8;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    font-size: 1rem;
+    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+input[type="number"]:focus {
+    border-color: #88d3ce;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+    outline: none;
+    background-color: #fff;
+}
+
+
+
+/* Additional styles can be added below */
+
+
+
+/*Older versionn 1.1*/
+/*body, html {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; // Hide overflow to avoid scrollbars 
+}
+
+@keyframes colorBrush {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+body {
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: colorBrush 15s ease infinite;
+}
+
+.container {
+    width: 400px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.1); /* Slightly transparent background 
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    backdrop-filter: blur(8px); /* Apply blur to the background elements behind the container 
+    position: relative;
+    z-index: 2; /* Ensure container is above the background 
+}
+
+.step {
+    display: none;
+}
+
+.step.active {
+    display: block;
+    animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+input[type="number"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 2px solid #fff;
+    background-color: rgba(255, 255, 255, 0.7); /* Slightly transparent input background 
+    box-sizing: border-box;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input[type="number"]:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 8px rgba(52, 152, 219, 0.5);
+}
+
+button {
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: none;
+    background-color: #fc5c7d;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+button:hover {
+    background-color: #6a82fb;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+#result {
+    margin-top: 20px;
+    color: #fff; /* White color for the text 
+    text-align: center;
+}

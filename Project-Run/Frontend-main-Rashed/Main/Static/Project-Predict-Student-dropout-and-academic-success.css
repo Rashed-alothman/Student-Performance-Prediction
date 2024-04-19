@@ -1,0 +1,165 @@
+/* Reset and Basics */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f2f5;
+  color: #333;
+  line-height: 1.6;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Container and Layout */
+.container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px; /* Rounded corners for modern appearance */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+  border: 1px solid rgba(0, 0, 0, 0.05); /* Soft border */
+  position: relative;
+  z-index: 10; /* Ensure container is above the wave */
+}
+
+/* Form Styles */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Button Styles */
+button {
+  display: block; /* Ensure it's a block element to fit width */
+  width: auto; /* Adjust width as needed */
+  margin: 2rem auto; /* Center the button and add space above and below */
+  padding: 10px 20px;
+  border-radius: 25px;
+  border: none;
+  background-color: #ffffff;
+  color: #000000;
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  transition: all 0.3s ease;
+}
+
+/* Button Glow on Hover */
+button:hover {
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.75);
+  background-color: #f8f8f8; /* Lighter shade on hover for a "raised" effect */
+}
+/* Button Active State */
+button:active {
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.9),
+    inset 0 0 5px rgba(0, 0, 0, 0.2);
+  background-color: #e8e8e8; /* Even lighter shade to simulate a press-down effect */
+}
+
+/* Wave Background */
+.wave-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: linear-gradient(
+    60deg,
+    #6d5dfc,
+    #c3a0f7
+  ); /* Light Mode Gradient */
+  overflow: hidden;
+}
+
+.wave-background::before,
+.wave-background::after {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 100%;
+  top: 75%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-repeat: repeat no-repeat;
+  background-position: 0 0;
+  background-size: 50% 100%;
+  animation: wave-animation 30s infinite linear;
+}
+
+.wave-background::before {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900"><path fill="%23ffffff" fill-opacity="0.5" d="M1600 0v900H0V0h1600zm-800 450c88.4 0 160-71.6 160-160s-71.6-160-160-160-160 71.6-160 160 71.6 160 160 160z"/></svg>');
+  z-index: 2;
+}
+
+.wave-background::after {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900"><path fill="%23ffffff" fill-opacity="0.3" d="M1600 900V0H0v900h1600zm-800-450c-88.4 0-160 71.6-160 160s71.6 160 160 160 160-71.6 160-160-71.6-160-160-160z"/></svg>');
+  z-index: 3;
+  animation-direction: reverse;
+  opacity: 0.5;
+}
+
+@keyframes wave-animation {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+body.dark-mode .container {
+  background-color: #222;
+  color: #e0e0e0;
+}
+
+body.dark-mode .wave-background {
+  background: linear-gradient(120deg, #0f0c29, #302b63, #24243e);
+}
+
+/* Dark Mode Toggle Button */
+#darkModeToggle {
+  padding: 10px 15px;
+  background-color: #555;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 20;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    width: 90%;
+  }
+}
