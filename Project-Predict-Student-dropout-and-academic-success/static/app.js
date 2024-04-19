@@ -38,6 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Assuming the server responds with an array of predictions
         predictionResult.innerHTML = "<h3>Predictions:</h3>";
         data.forEach((pred, index) => {
+          const result = pred === 1 ? "Success (Pass)" : "Dropout (Fail)";
           predictionResult.innerHTML += `Prediction ${index + 1}: ${pred}<br>`;
         });
       })

@@ -20,8 +20,9 @@ body {
   margin: 40px auto;
   padding: 20px;
   background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 10px; /* Rounded corners for modern appearance */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+  border: 1px solid rgba(0, 0, 0, 0.05); /* Soft border */
   position: relative;
   z-index: 10; /* Ensure container is above the wave */
 }
@@ -48,17 +49,31 @@ select {
 
 /* Button Styles */
 button {
-  cursor: pointer;
+  display: block; /* Ensure it's a block element to fit width */
+  width: auto; /* Adjust width as needed */
+  margin: 2rem auto; /* Center the button and add space above and below */
   padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
+  border-radius: 25px;
   border: none;
-  border-radius: 5px;
-  transition: background-color 0.2s;
+  background-color: #ffffff;
+  color: #000000;
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  transition: all 0.3s ease;
 }
 
+/* Button Glow on Hover */
 button:hover {
-  background-color: #0056b3;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.75);
+  background-color: #f8f8f8; /* Lighter shade on hover for a "raised" effect */
+}
+/* Button Active State */
+button:active {
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.9),
+    inset 0 0 5px rgba(0, 0, 0, 0.2);
+  background-color: #e8e8e8; /* Even lighter shade to simulate a press-down effect */
 }
 
 /* Wave Background */
