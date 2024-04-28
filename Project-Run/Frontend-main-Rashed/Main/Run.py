@@ -22,31 +22,47 @@ os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 logging.basicConfig(level=logging.DEBUG)
 
 # Load models and components
-model_dropout = joblib.load('my_trained_model.joblib')
-components = joblib.load('my_model.joblib')
-pipeline = components['pipeline']
-explainer = components['explainer']
+#Project-Predict-Student-dropout-and-academic-success files are loaded
+model_dropout = None
+try:
+    model_dropout = joblib.load('my_trained_model.joblib')
+    logging.info("Model loaded successfully.")
+except Exception as e:
+    logging.error(f"Error loading model: {e}")
 
+#Project-Student-Exam-Performance-Prediction files 
+components = None
+try:
+    components = joblib.load('my_model.joblib')
+    pipeline = components['pipeline']
+    explainer = components['explainer']
+    logging.info("Model and components loaded successfully.")
+except Exception as e:
+    logging.error(f"Error loading model or components: {e}")
+
+#Project-Student-Performace
 model_student_performance, scaler_student_performance = None, None
 try:
     with open('model_pkl', 'rb') as f:
         model_student_performance = pickle.load(f)
     with open('scaler_pkl', 'rb') as f:
         scaler_student_performance = pickle.load(f)
+        logging.info("Model and scaler are loaded successfully.")
 except Exception as e:
     logging.error(f"Error loading model or scaler: {e}")
 
+# Define a function to check if the uploaded file has an allowed extension
 def allowed_file(filename):
     """Check if the uploaded file has an allowed extension."""
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
+# Define a function to process CSV file and predict
 def predict_from_csv(filepath):
     """Function to process CSV file and predict."""
     df = pd.read_csv(filepath, skipinitialspace=True)
     predictions = model_dropout.predict(df)
     return jsonify(predictions.tolist())
-
-@app.route('/Project-Predict-Student-dropout-and-academic-success.html', methods=['GET', 'POST'])
+@app.route('/Project-Run/Frontend-main-Rashed/Main/templates/Project-Student-dropout-and-academic-success.html', methods=['GET', 'POST'])
 def upload_dropout_file():
     if request.method == 'POST':
         if 'file' not in request.files:
