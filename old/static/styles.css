@@ -1,0 +1,42 @@
+body, html {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    color: #333; /* Enhanced readability */
+}
+
+.container {
+    width: 80%;
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    /* Seamless color brush effect for the container */
+    background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1);
+    color: #ffffff; /* White text color for better contrast */
+}
+
+input[type="number"], button {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    border: none;
+}
+
+button.next {
+    background-color: #4CAF50; /* Green for next buttons */
+}
+
+#result {
+    margin-top: 20px;
+}

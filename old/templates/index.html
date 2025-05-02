@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Performance Prediction</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Predict Student's Final Exam Marks</h1>
+    <!-- Form for predictions, preventing default submission behavior -->
+    <form id="predictionForm" onsubmit="event.preventDefault(); predict();">
+        <!-- Accessible input fields with labels -->
+        <label for="sem_present_count">Semester Present Count:</label>
+        <input type="number" id="sem_present_count" placeholder="Semester Present Count">
+        
+        <label for="sem_absent_count">Semester Absent Count:</label>
+        <input type="number" id="sem_absent_count" placeholder="Semester Absent Count">
+        
+        <label for="sem_eval_lec_test_1_mark">Lecture Test 1 Mark:</label>
+        <input type="number" id="sem_eval_lec_test_1_mark" placeholder="Lecture Test 1 Mark">
+        
+        <label for="sem_eval_lab_test_1_mark">Lab Test 1 Mark:</label>
+        <input type="number" id="sem_eval_lab_test_1_mark" placeholder="Lab Test 1 Mark">
+        
+        <label for="semester_evaluation_mid_mark">Mid Semester Mark:</label>
+        <input type="number" id="semester_evaluation_mid_mark" placeholder="Mid Semester Mark">
+        
+        <label for="sem_eval_lec_test_2_mark">Lecture Test 2 Mark:</label>
+        <input type="number" id="sem_eval_lec_test_2_mark" placeholder="Lecture Test 2 Mark">
+        
+        <label for="sem_eval_lab_test_2_mark">Lab Test 2 Mark:</label>
+        <input type="number" id="sem_eval_lab_test_2_mark" placeholder="Lab Test 2 Mark">
+        
+        <label for="semester_evaluation_pre_gtu_mark">Pre GTU Mark:</label>
+        <input type="number" id="semester_evaluation_pre_gtu_mark" placeholder="Pre GTU Mark">
+        
+        <label for="semester_evaluation_internal_mark">Internal Mark:</label>
+        <input type="number" id="semester_evaluation_internal_mark" placeholder="Internal Mark">
+        
+        <!-- Submission button -->
+        <button type="submit">Predict Marks</button>
+    </form>
+    <!-- Display area for prediction results and feature importances -->
+    <div id="result">
+        <p id="predictedFinalExamMarks"></p>
+    </div>
+    
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

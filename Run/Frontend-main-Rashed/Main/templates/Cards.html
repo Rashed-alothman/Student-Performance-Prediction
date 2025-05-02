@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='Cards.css') }}"
+    />
+    <script src="{{ url_for('static', filename='Cards.js') }}"></script>
+  </head>
+  <body>
+    <main class="main flow">
+      <h1 class="main__heading">THE PROJECTS</h1>
+      <div class="main__cards cards">
+        <div class="cards__inner">
+          <!-- حقت البك قرونك الكرت -->
+          <div class="cards__card card">
+            <h1 class="card__heading">Student Exam Performance Prediction</h1>
+            <p class="card__Secondheader"></p>
+            <!--card__bullets حقت الصح -->
+            <ul role="list" class="card__bullets flow">
+              <li>utilizes machine learning</li>
+              <li>artificial intelligence techniques to analyze</li>
+              <li>tudents' performance data in previous exams</li>
+            </ul>
+            <a
+              href="Project-Student-Exam-Performance-Prediction.html"
+              class="card__cta cta"
+              >Get Started</a
+            >
+          </div>
+
+          <div class="cards__card card">
+            <h1 class="card__heading">
+              Predict Student dropout and academicsuccess
+            </h1>
+            <p class="card__Secondheader"></p>
+            <ul role="list" class="card__bullets flow">
+              <li>.</li>
+              <li>.</li>
+              <li>.</li>
+            </ul>
+            <a
+              href="/Project-Run/Frontend-main-Rashed/Main/templates/Project-Student-dropout-and-academic-success.html"
+              class="card__cta cta"
+              >Get Started</a
+            >
+          </div>
+
+          <div class="cards__card card">
+            <h1 class="card__heading">project Student Performace</h1>
+            <p class="card__Secondheader"></p>
+            <ul role="list" class="card__bullets flow">
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
+            <a href="project-Student-Performace.html" class="card__cta cta"
+              >Get Started</a
+            >
+          </div>
+          <div class="cards__card card">
+            <h2 class="card__heading">New Card</h2>
+            <p class="card__Secondheader"></p>
+            <ul role="list" class="card__bullets flow">
+              <li>New feature 1</li>
+              <li>New feature 2</li>
+              <li>New feature 3</li>
+            </ul>
+            <a href="#newcard" class="card__cta cta">Explore</a>
+          </div>
+        </div>
+
+        <div class="overlay cards__inner"></div>
+      </div>
+    </main>
+  </body>
+</html>

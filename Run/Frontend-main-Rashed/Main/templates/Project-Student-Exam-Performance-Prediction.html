@@ -1,0 +1,44 @@
+<!-- frontend/templates-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Performance Prediction</title>
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='Project-Student-Exam-Performance-Prediction.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Student Performance Prediction</h1>
+
+      <div class="form-group">
+        <label for="studyHours">Study Hours:</label>
+        <input type="number" id="studyHours" placeholder="Enter Study Hours" />
+      </div>
+
+      <div class="form-group">
+        <label for="prevExamScore">Previous Exam Score:</label>
+        <input
+          type="number"
+          id="prevExamScore"
+          placeholder="Enter Previous Exam Score"
+        />
+      </div>
+
+      <button onclick="predict()">Predict Pass/Fail</button>
+
+      <div class="result">
+        <p id="inputValues"></p>
+        <!-- Display input values -->
+        <p id="result"></p>
+      </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='Project-Predict-Student-dropout-and-academic-success.js') }}"></script>
+  </body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Performance Prediction</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/Main/Static/project-Student-Performace.css"
+    />
+   <!--
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='project-Student-Performace.css') }}"
+    />
+    -->
+    <style>
+      /* Style for custom alert container */
+      .custom-alert-container {
+          position: fixed;
+          top: 20px;
+          left: 50%;
+          transform: translateX(-50%);
+          background-color: rgba(244, 67, 54, 0.9); /* Red with transparency */
+          color: white;
+          padding: 10px 20px;
+          border-radius: 5px;
+          z-index: 1000; /* Ensure it appears above other content */
+          display: none; /* Initially hidden */
+      }
+  </style>
+  <div id="customAlertContainer" class="custom-alert-container"></div>
+
+    <link
+      href="https://fonts.cdnfonts.com/css/times-new-roman"
+      rel="stylesheet"
+    />
+    <div class="header">
+      <button id="toggleDarkMode">Dark Mood</button>
+    </div>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Predict Student's Final Exam Marks</h1>
+      <div id="stepContainer">
+        <div class="step active" data-step="1">
+          <label for="sem_present_count">Semester Present Count:</label>
+          <input
+            type="number"
+            id="sem_present_count"
+            placeholder="Enter Present Count"
+          />
+          <button class="next">Next</button>
+        </div>
+        <div class="step" data-step="2" style="display: none">
+          <label for="sem_absent_count">Semester Absent Count:</label>
+          <input
+            type="number"
+            id="sem_absent_count"
+            placeholder="Enter Absent Count"
+          />
+          <button onclick="prevStep()">Back</button>
+          <button class="next">Next</button>
+        </div>
+        <div class="step" data-step="3" style="display: none">
+          <label for="sem_eval_lec_test_1_mark">Lecture Test 1 Mark:</label>
+          <input
+            type="number"
+            id="sem_eval_lec_test_1_mark"
+            placeholder="Lecture Test 1 Mark"
+          />
+          <button onclick="prevStep()">Back</button>
+          <button class="next">Next</button>
+        </div>
+        <div class="step" data-step="4" style="display: none">
+          <label for="sem_eval_lab_test_1_mark">Lab Test 1 Mark:</label>
+          <input
+            type="number"
+            id="sem_eval_lab_test_1_mark"
+            placeholder="Lab Test 1 Mark"
+          />
+          <button onclick="prevStep()">Back</button>
+          <button class="next">Next</button>
+        </div>
+        <div class="step" data-step="5" style="display: none">
+          <label for="semester_evaluation_mid_mark">Mid Semester Mark:</label>
+          <input
+            type="number"
+            id="semester_evaluation_mid_mark"
+            placeholder="Mid Semester Mark"
+          />
+          <button onclick="prevStep()">Back</button>
+          <button class="next">Next</button>
+        </div>
+        <div class="step" data-step="6" style="display: none">
+          <label for="sem_eval_lec_test_2_mark">Lecture Test 2 Mark:</label>
+          <input
+            type="number"
+            id="sem_eval_lec_test_2_mark"
+            placeholder="Lecture Test 2 Mark"
+          />
+          <button onclick="prevStep()">Back</button>
+          <button class="next">Next</button>
+        </div>
+        <div class="step" data-step="7" style="display: none">
+          <label for="sem_eval_lab_test_2_mark">Lab Test 2 Mark:</label>
+          <input
+            type="number"
+            id="sem_eval_lab_test_2_mark"
+            placeholder="Lab Test 2 Mark"
+          />
+          <button onclick="prevStep()">Back</button>
+          <button class="next">Next</button>
+        </div>
+        <div class="step" data-step="8" style="display: none">
+          <label for="semester_evaluation_pre_gtu_mark">Pre GTU Mark:</label>
+          <input
+            type="number"
+            id="semester_evaluation_pre_gtu_mark"
+            placeholder="Pre GTU Mark"
+          />
+          <button onclick="prevStep()">Back</button>
+          <button class="next">Next</button>
+        </div>
+        <div class="step" data-step="9" style="display: none">
+          <label for="semester_evaluation_internal_mark">Internal Mark:</label>
+          <input
+            type="number"
+            id="semester_evaluation_internal_mark"
+            placeholder="Internal Mark"
+          />
+          <button onclick="prevStep()">Back</button>
+          <button onclick="predict()">Predict Marks</button>
+        </div>
+      </div>
+      <div id="result">
+        <p id="predictedFinalExamMarks"></p>
+      </div>
+    </div>
+    <script src="/Main/Static/project-Student-Performace.js"></script>
+    <!--
+    <script src="{{ url_for('static', filename='project-Student-Performace.js') }}"></script>
+    -->
+  </body>
+</html>

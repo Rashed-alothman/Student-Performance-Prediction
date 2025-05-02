@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Predict Student dropout and academic success</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='Project-Predict-Student-dropout-and-academic-success.css') }}"
+    />
+  </head>
+  <body>
+    <div class="wave-background"></div>
+    <div class="container">
+      <h1>Predict Student dropout and academic success</h1>
+            <!-- Dark mode toggle button -->
+            <button id="darkModeToggle" class="button">Toggle Dark Mode</button>
+
+            <!-- CSV File Upload -->
+            <form id="csv-upload-form" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="csvFile">Upload CSV File:</label>
+                    <input type="file" id="csvFile" name="csvFile" accept=".csv">
+                    <button type="submit">Upload and Predict</button>
+                </div>
+            </form>
+            <hr>
+            <!-- Button to show manual entry form -->
+        <button id="manualEntryButton" class="button">Enter Data Manually</button>
+            <form id="manual-entry-form" style="display: none;">
+        <!-- Marital Status -->
+        <div class="form-group">
+          <label for="maritalStatus">Marital Status:</label>
+          <select id="maritalStatus" name="maritalStatus">
+            <option value="single">Single</option>
+            <option value="married">Married</option>
+            <!-- Additional options as needed -->
+          </select>
+        </div>
+
+        <!-- Application Mode -->
+        <div class="form-group">
+          <label for="applicationMode">Application Mode:</label>
+          <input
+            type="text"
+            id="applicationMode"
+            name="applicationMode"
+            placeholder="Online, Offline, etc."
+          />
+        </div>
+
+        <!-- Application Order -->
+        <div class="form-group">
+          <label for="applicationOrder">Application Order:</label>
+          <input type="number" id="applicationOrder" name="applicationOrder" />
+        </div>
+
+        <!-- Course -->
+        <div class="form-group">
+          <label for="course">Course:</label>
+          <input
+            type="text"
+            id="course"
+            name="course"
+            placeholder="Course name"
+          />
+        </div>
+
+        <!-- Daytime/Evening Attendance -->
+        <div class="form-group">
+          <label for="attendanceMode">Daytime/Evening Attendance:</label>
+          <select id="attendanceMode" name="attendanceMode">
+            <option value="daytime">Daytime</option>
+            <option value="evening">Evening</option>
+          </select>
+        </div>
+
+        <!-- Previous Qualification -->
+        <div class="form-group">
+          <label for="prevQualification">Previous Qualification:</label>
+          <input
+            type="text"
+            id="prevQualification"
+            name="prevQualification"
+            placeholder="High School, Bachelor's, etc."
+          />
+        </div>
+
+        <!-- Nationality -->
+        <div class="form-group">
+          <label for="nationality">Nationality:</label>
+          <input
+            type="text"
+            id="nationality"
+            name="nationality"
+            placeholder="Country"
+          />
+        </div>
+
+        <!-- Mother's Qualification -->
+        <div class="form-group">
+          <label for="mothersQualification">Mother's Qualification:</label>
+          <input
+            type="text"
+            id="mothersQualification"
+            name="mothersQualification"
+          />
+        </div>
+
+        <!-- Father's Qualification -->
+        <div class="form-group">
+          <label for="fathersQualification">Father's Qualification:</label>
+          <input
+            type="text"
+            id="fathersQualification"
+            name="fathersQualification"
+          />
+        </div>
+
+        <!-- Mother's Occupation -->
+        <div class="form-group">
+            <label for="mothersOccupation">Mother's Occupation:</label>
+            <input type="text" id="mothersOccupation" name="mothersOccupation" placeholder="Mother's occupation">
+        </div>
+
+        <!-- Father's Occupation -->
+        <div class="form-group">
+            <label for="fathersOccupation">Father's Occupation:</label>
+            <input type="text" id="fathersOccupation" name="fathersOccupation" placeholder="Father's occupation">
+        </div>
+
+        <!-- Displaced -->
+        <div class="form-group">
+            <label for="displaced">Displaced:</label>
+            <select id="displaced" name="displaced">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+        </div>
+
+        <!-- Educational Special Needs -->
+        <div class="form-group">
+            <label for="specialNeeds">Educational Special Needs:</label>
+            <select id="specialNeeds" name="specialNeeds">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+        </div>
+
+        <!-- Debtor -->
+        <div class="form-group">
+            <label for="debtor">Debtor:</label>
+            <select id="debtor" name="debtor">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+        </div>
+
+        <!-- Tuition Fees Up To Date -->
+        <div class="form-group">
+            <label for="tuitionFeesUpToDate">Tuition Fees Up To Date:</label>
+            <select id="tuitionFeesUpToDate" name="tuitionFeesUpToDate">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+        </div>
+
+        <!-- Gender -->
+        <div class="form-group">
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+
+        <!-- Scholarship Holder -->
+        <div class="form-group">
+            <label for="scholarshipHolder">Scholarship Holder:</label>
+            <select id="scholarshipHolder" name="scholarshipHolder">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+        </div>
+
+        <!-- Age at Enrollment -->
+        <div class="form-group">
+            <label for="ageAtEnrollment">Age at Enrollment:</label>
+            <input type="number" id="ageAtEnrollment" name="ageAtEnrollment" placeholder="Age">
+        </div>
+
+        <!-- International -->
+        <div class="form-group">
+            <label for="international">International:</label>
+            <select id="international" name="international">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+        </div>
+
+        <!-- Curricular Units 1st Sem (Credited) -->
+        <div class="form-group">
+            <label for="curricularUnits1stSemCredited">Curricular Units 1st Sem (Credited):</label>
+            <input type="number" id="curricularUnits1stSemCredited" name="curricularUnits1stSemCredited" placeholder="Number of units">
+        </div>
+
+        <!-- Curricular Units 1st Sem (Enrolled) -->
+        <div class="form-group">
+            <label for="curricularUnits1stSemEnrolled">Curricular Units 1st Sem (Enrolled):</label>
+            <input type="number" id="curricularUnits1stSemEnrolled" name="curricularUnits1stSemEnrolled" placeholder="Number of units">
+        </div>
+
+        <!-- Curricular Units 1st Sem (Evaluations) -->
+        <div class="form-group">
+            <label for="curricularUnits1stSemEvaluations">Curricular Units 1st Sem (Evaluations):</label>
+            <input type="number" id="curricularUnits1stSemEvaluations" name="curricularUnits1stSemEvaluations" placeholder="Number of evaluations">
+        </div>
+
+        <!-- Curricular Units 1st Sem (Approved) -->
+        <div class="form-group">
+            <label for="curricularUnits1stSemApproved">Curricular Units 1st Sem (Approved):</label>
+            <input type="number" id="curricularUnits1stSemApproved" name="curricularUnits1stSemApproved" placeholder="Number of units">
+        </div>
+
+        <button type="submit" id="submitButton">Submit</button>
+    </form>
+    <div id="predictionResult"></div>
+</div>
+
+
+      </form>
+    </div>
+
+    <script src="{{ url_for('static', filename='Project-Predict-Student-dropout-and-academic-success.js') }}"></script>
+  </body>
+</html>

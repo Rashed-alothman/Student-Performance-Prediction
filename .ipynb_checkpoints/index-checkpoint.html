@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Performance Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Student Performance Prediction</h1>
+    
+    <label for="Study Hours">Feature 1:</label>
+    <input type="text" id="Study Hours" placeholder="Enter Study Hours"><br>
+    
+    <label for="Previous Exam Score">Feature 2:</label>
+    <input type="text" id="Previous Exam Score" placeholder="Enter Previous Exam Score"><br>
+    
+    <button onclick="predict()">Predict</button>
+
+    <p id="result"></p>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
