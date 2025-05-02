@@ -1,4 +1,7 @@
-
+@font-face {
+    font-family: "Geist Sans";
+    src: url("https://assets.codepen.io/605876/GeistVF.ttf") format("truetype");
+  }
 
 *,
 *:after,
@@ -12,9 +15,9 @@ html {
 /* قيمه لاداره الالوان*/
 :root {
     /* Light mode color definitions */
-	--light-primary: #6c6b6b;
-    --light-secondary: #bdd6e8;
-    --light-accent: #383c53;
+    --light-primary: #920a0a;
+    --light-secondary: #88d3ce;
+    --light-accent: #6e45e2;
 
     /* Dark mode color definitions */
     --dark-primary: #2c3e50;
@@ -27,21 +30,14 @@ html {
 
  body {
 	min-height: 100vh;
+	font-family:  "Geist Sans", "SF Pro Text", "SF Pro Icons", "AOS Icons", "Helvetica Neue", Helvetica, Arial, sans-serif, system-ui;
 	font-weight: 80;
 	background: linear-gradient(-45deg, var(--light-primary), var(--light-secondary), var(--light-accent));
 	color: hsl(0 0% 90%);
 	overflow-x: hidden;
 
-	
+
 }
-@font-face {
-	src:url(/fonts/Azonix.otf);
-	font-family: 'Azonix';
-  }
-  @font-face {
-	src:url(/fonts/CaviarDreams.ttf);
-	font-family: 'caviardreams';
-  }
 @keyframes light-wave {
     0%, 100% { background-position: 90% 10%; }
     50% { background-position: 100% 50%; }
@@ -56,8 +52,6 @@ p {
 	max-width: 200ch;
 	height: 50vh;
 	font-size: clamp(1.5rem, 1.35vw + 1rem, 8rem);
-	font-family:'CaviarDreams';
-
 }
 
 section:nth-of-type(1) {
@@ -81,7 +75,6 @@ article {
 	font-size: clamp(2.5rem, 3.35vw + 1rem, 8rem);
 	letter-spacing: -0.075ch;
 	margin: 0;
-	font-family: 'Azonix'
 }
 
 h1 {
@@ -109,8 +102,8 @@ nav a:first-of-type {
 	color: white;
 }
 nav a:last-of-type {
-	background: hsl(0, 6%, 30%);
-	color: rgb(255, 255, 255);
+	background: hsl(173 100% 51%);
+	color: black;
 	padding: 1rem 2rem;
 	border-radius: 22px;
 	text-decoration: none;
@@ -118,7 +111,7 @@ nav a:last-of-type {
 	transition: background 0.2s;
 }
 nav a:last-of-type:is(:hover, :focus-visible) {
-	background:  hsl(0, 0%, 0%);
+	background: hsl(173 100% 40%);
 }
 
 .content {

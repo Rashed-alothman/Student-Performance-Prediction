@@ -1,9 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700;800;900&display=swap");
 :root {
   /* Light mode color definitions */
-  --light-primary: #6c6b6b;
-  --light-secondary: #bdd6e8;
-  --light-accent: #383c53;
+  --light-primary: #f0f0f0;
+  --light-secondary: #88d3ce;
+  --light-accent: #76699a;
 
 
 
@@ -24,19 +24,11 @@ body {
   height: 100%;
   min-height: 100vh;
 }
-@font-face {
-	src:url(/fonts/Azonix.otf);
-	font-family: 'Azonix';
-  }
-  
-@font-face {
-	src:url(/fonts/CaviarDreams.ttf);
-	font-family: 'caviardreams';
-  }
+
 body {
   display: grid;
   place-items: center;
-  font-family:'CaviarDreams';
+  font-family: "League Spartan", system-ui, sans-serif;
   font-size: 1.1rem;
   line-height: 1.2;
   background: linear-gradient(-45deg, var(--light-primary), var(--light-secondary), var(--light-accent));
@@ -111,7 +103,11 @@ ul {
   --saturation: 100%;
   --lightness: 48.04%;
 }
-
+.card:nth-child(4) {
+    --hue: 338.69;
+    --saturation: 100%;
+    --lightness: 48.04%;
+  }
 .card__bullets {
   line-height: 1.4;
 }
@@ -124,7 +120,7 @@ ul {
 }
 
 .card__heading {
-  font-size: 1.50em;
+  font-size: 1.75em;
   font-weight: 700;
 }
 
@@ -193,11 +189,5 @@ ul {
 :not(.overlay) > .card:hover {
  
   background: hsla(var(--hsl), 0.1);
-}
-.box{
-  transition: opacity 0.6s ease;
-}
-.container:hover > :not(:hover){
-  opacity: 0.4;
 }
 

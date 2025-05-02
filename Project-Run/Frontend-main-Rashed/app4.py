@@ -41,7 +41,7 @@ def scale_features(study_hours, prev_exam_score):
 # Define the route for rendering the HTML page
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('Project-Student-Exam-Performance-Prediction.html')
 
 # Define the route for handling the prediction
 @app.route('/predict', methods=['POST'])

@@ -42,7 +42,7 @@ def load_components()-> None:
 @app.route('/')
 def index():
     # Serve the main page of the app
-    return render_template('index.html')
+    return render_template('project-Student-Performace.html')
 
 @app.route('/predict', methods=['POST'])
 def predict() -> jsonify:

@@ -4,56 +4,28 @@
 *::after {
   box-sizing: border-box;
 }
-:root {
-  /* Light mode color definitions */
-  --light-primary: #6c6b6b;
-    --light-secondary: #bdd6e8;
-    --light-accent: #383c53;
-  
 
-  /* Dark mode color definitions */
-  --dark-primary: #2c3e50;
-  --dark-secondary: #34495e;
-  --dark-accent: #4e54c8;
-
-  /* Transition timing */
-  --transition-time: 0.3s;
-}
 body {
-  
+  margin: 0;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(-45deg, var(--light-primary), var(--light-secondary), var(--light-accent));
-  background-size: 300% 300%;
-  animation: light-wave 10s ease infinite;
-  transition: background var(--transition-time);
+  background-color: #f0f2f5;
+  color: #333;
+  line-height: 1.6;
+  transition: background-color 0.3s, color 0.3s;
 }
-@keyframes light-wave {
-  0%, 100% { background-position: 90% 10%; }
-  50% { background-position: 100% 50%; }
-}
-body.dark-mode {
-  background: linear-gradient(-45deg, var(--dark-primary), var(--dark-secondary), var(--dark-accent));
-  animation: dark-wave 10s ease infinite;
-}
-
 
 /* Container and Layout */
 .container {
   max-width: 800px;
   margin: 40px auto;
   padding: 20px;
-  background-color: rgba(255, 255, 255, 0.1); /* Slightly transparent background */
+  background-color: #fff;
   border-radius: 10px; /* Rounded corners for modern appearance */
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
   border: 1px solid rgba(0, 0, 0, 0.05); /* Soft border */
   position: relative;
   z-index: 10; /* Ensure container is above the wave */
 }
-body.dark-mode .container {
-  background: rgba(126, 111, 224, 0.2); /* For dark mode */
-  border-color: rgba(255, 255, 255, 0.1);
-  }
-
 
 /* Form Styles */
 .form-group {
@@ -104,7 +76,7 @@ button:active {
   background-color: #e8e8e8; /* Even lighter shade to simulate a press-down effect */
 }
 
-/* Wave Background 
+/* Wave Background */
 .wave-background {
   position: fixed;
   top: 0;
@@ -117,8 +89,9 @@ button:active {
     #6d5dfc,
     #c3a0f7
   ); /* Light Mode Gradient */
- 
-/*
+  overflow: hidden;
+}
+
 .wave-background::before,
 .wave-background::after {
   content: "";
@@ -133,7 +106,7 @@ button:active {
   background-size: 50% 100%;
   animation: wave-animation 30s infinite linear;
 }
-/*
+
 .wave-background::before {
   background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900"><path fill="%23ffffff" fill-opacity="0.5" d="M1600 0v900H0V0h1600zm-800 450c88.4 0 160-71.6 160-160s-71.6-160-160-160-160 71.6-160 160 71.6 160 160 160z"/></svg>');
   z-index: 2;
@@ -154,7 +127,7 @@ button:active {
     transform: translate(-50%, -50%) rotate(360deg);
   }
 }
-*/
+
 /* Dark Mode Styles */
 body.dark-mode {
   background-color: #121212;

@@ -37,21 +37,14 @@
  */
 /* Use Google Fonts to import the Poppins font for a modern appearance */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
-/*
-    --light-primary: #6c6b6b;
-    --light-secondary: #bdd6e8;
-    --light-accent: #383c53;
-
---light-primary: #715da8;
---light-secondary: #c2c0e7;
---light-accent: #332941;
 
 /* CSS Variables for easy theme management */
 :root {
     /* Light mode color definitions */
-    --light-primary: #6c6b6b;
-    --light-secondary: #bdd6e8;
-    --light-accent: #383c53;
+    --light-primary: #f0f0f0;
+    --light-secondary: #88d3ce;
+    --light-accent: #6e45e2;
+
     /* Dark mode color definitions */
     --dark-primary: #2c3e50;
     --dark-secondary: #34495e;
@@ -98,8 +91,6 @@ body {
 body.dark-mode {
     background: linear-gradient(-45deg, var(--dark-primary), var(--dark-secondary), var(--dark-accent));
     animation: dark-wave 10s ease infinite;
-    transition: background var(--transition-time);
-
 }
 
 /* Header styles */
@@ -133,13 +124,11 @@ body.dark-mode {
 
 /* Container styles */
 .container {
-   
-    background-color: rgba(255, 255, 255, 0.1); /* Slightly transparent background */
-
     width: 80%; /* Adjust to your preferred width */
     max-width: 500px;
     margin: 2rem auto;
     padding: 2rem;
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white for light mode */
     backdrop-filter: blur(10px); /* Smooth blur effect */
     border-radius: 10px; /* Rounded corners for modern appearance */
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);/* Subtle shadow for depth */

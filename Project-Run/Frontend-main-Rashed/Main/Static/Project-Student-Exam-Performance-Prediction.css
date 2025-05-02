@@ -24,7 +24,7 @@ body, html {
 }
 
 body {
-    background: linear-gradient(-45deg, #6c6b6b, #bdd6e8, #383c53);
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
     background-size: 400% 400%;
     animation: colorBrush 15s ease infinite;
 }
@@ -80,7 +80,7 @@ button {
     padding: 10px 15px;
     border-radius: 5px;
     border: none;
-    background-color: #4f4e4e;
+    background-color: #fc5c7d;
     color: white;
     font-size: 16px;
     cursor: pointer;
